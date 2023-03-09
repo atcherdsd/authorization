@@ -1,0 +1,193 @@
+$clr-primary-text: #111111;
+$clr-primary-hover: #8ad6ff;
+$clr-primary-dark: #7bdff6;
+$clr-primary-light: #c7f5ff;
+$clr-gray: #F2F2F2;
+/*   border radius */
+$radius: 1rem;
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap');
+
+.form {
+    max-width: 33rem;
+		width: 100%;
+    padding: 39px 22px 33px 21px;
+    background-color: white;
+		color: $clr-primary-text;
+		font-family: "WorkSans", "Arial", sans-serif;
+
+    &__title {
+			font-weight: 500;
+			font-size: 22px;
+			line-height: 26px;
+			letter-spacing: -0.46px;
+    }
+  
+		&__subtitle {
+			font-weight: 300;
+			font-size: 0.875rem;
+			line-height: 1rem;
+		}
+
+		&__group_container {
+      display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			width: 100%;
+      padding-top: 1.25rem;
+    }
+
+		&__group {
+			display: flex;
+    	justify-content: space-between;
+			gap: 0.8125rem;
+			width: 100%;
+			height: 2.625rem;
+		}
+
+		&__group_item {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		
+		&__label {
+			font-weight: 300;
+			font-size: 0.75rem;
+			line-height: 0.875rem;
+			color: #7C7C7C;
+    }
+
+		&__input,
+		&__select {
+			font-size: 0.875rem;
+			line-height: 1rem;
+      font-weight: 400;
+			padding-bottom: 6.3px;
+			border-bottom: 0.7px solid $clr-gray;
+      outline: none;
+    }
+
+		&__select {
+			margin-left: -3px;
+		}
+
+    &__password{
+      margin-top:3.5rem;
+      position: relative;
+      height: 3rem;
+      margin-bottom: 1.5rem;
+    }
+  
+		&__input_radio {
+			color: #5A61ED;
+			border: 0.7px solid #5A61ED;
+		}
+  
+    &__buttons{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top:5rem;
+        & a{
+          cursor: pointer;
+        }
+        & a:hover{
+          transition: 0.3s;
+          border-bottom: 2px solid $clr-primary-hover;
+        }
+    }
+    &__signInButtons{
+      display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top:5rem;
+        & a{
+          cursor: pointer;
+        }
+        & a:hover{
+          transition: 0.3s;
+          border-bottom: 2px solid $clr-primary-hover;
+        }
+    }
+  
+    &__button {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+      display: block;
+			width: 9.625rem;
+			height: 2rem;
+      margin-left: 1rem;
+      padding: 0.75rem 2rem;
+      background-color: #8ad6ff;
+      font-family: inherit;
+      font-weight: inherit;
+      border-radius: 0.5rem;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color 200ms ease-in;
+  
+      &:hover {
+        background-color: $clr-primary-dark;
+      }
+    }
+    .error{
+      padding-top: 5px;
+      color:red;
+    }
+  }
+  
+	.shape__container {
+		display: block;
+		width: 0.6875rem;
+		height: 0.5rem;
+		position: absolute;
+		right: 0;
+		bottom: 26.19%;
+	}
+	.radio__group {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+  /* 
+  1. When the input is in the focus state
+  reduce the size of the label and move upwards 
+  
+  2. Keep label state when content is in input field 
+  */
+  
+  .form__input:focus ~ .form__label,
+  .form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 910px) {
+    .form__login {
+      margin-bottom: 4.5rem;
+    }
+  }
+  @media (max-width: 450px) {
+    .form__login {
+      margin-bottom: 3.5rem;
+    }
+  }
+  @media (max-width: 410px) {
+    .form {
+      max-width: 24rem;
+    }
+    .form__login {
+      margin-top: 4.5rem;
+    }
+    .form__margin {
+      margin-top: 7.5rem;
+    }
+    .form__password {
+      margin-top: 6rem;
+    }
+  }
