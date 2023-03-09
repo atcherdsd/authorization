@@ -2,6 +2,7 @@ import React from 'react';
 import cl from './SignUpPage.module.scss';
 import SignUpForm from '../SignUpForm/SignUpForm';
 
+const question = 'Have an account? ';
 const SignUpPage = () => {
 	return (
 		<React.Fragment>
@@ -12,7 +13,7 @@ const SignUpPage = () => {
 					</aside>
 					<SignUpForm></SignUpForm>
 					<p className={cl.login_notification}>
-						Have an account?
+						{question}
 						<a className={cl.login_link} href="#">
 							Login
 						</a>

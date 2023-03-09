@@ -3,6 +3,7 @@ import React from 'react';
 import cl from './SignUpForm.module.scss';
 import nationalities from '../../data/nationalities.json';
 import okIcon from '../../assets/Shape.svg';
+import { dates } from '../../data/dates';
 
 function SignUpForm() {
 	const [isFullData] = React.useState(false);
@@ -70,7 +71,7 @@ function SignUpForm() {
 							className={cl.form__input}
 							placeholder=" "
 							autoComplete="off"
-							defaultValue={''}
+							defaultValue={'alice.miller@yahoo.com'}
 						></input>
 						<span className={cl.shape__container}>
 							<img src={okIcon} alt="Ok" />
@@ -80,34 +81,61 @@ function SignUpForm() {
 
 				<div className={cl.form__group}>
 					<div className={cl.form__group_item}>
-						<label htmlFor="birth" className={cl.form__label}>
-							Date of Birth
-						</label>
-						<input
-							type="date"
-							id="birth"
-							className={cl.form__input}
-							placeholder=" "
-							autoComplete="off"
-							defaultValue={''}
-						></input>
+						<label className={cl.form__label}>Date of Birth</label>
+						<div className={cl.select__wrapper}>
+							<select className={cl.form__select_days} defaultValue={21}>
+								{dates.days.map((elem) => {
+									return (
+										<option className={cl.nation__option} value={elem} key={elem}>
+											{elem}
+										</option>
+									);
+								})}
+							</select>
+							<select className={cl.form__select_months} defaultValue={'December'}>
+								{dates.months.map((elem) => {
+									return (
+										<option className={cl.nation__option} value={elem} key={elem}>
+											{elem}
+										</option>
+									);
+								})}
+							</select>
+							<select className={cl.form__select_years} defaultValue={1995}>
+								{dates.years.map((elem) => {
+									return (
+										<option className={cl.nation__option} value={elem} key={elem}>
+											{elem}
+										</option>
+									);
+								})}
+							</select>
+						</div>
 					</div>
 					<div className={cl.form__group_item}>
-						<label className={cl.form__label}>Gender</label>
+						<div className={cl.form__label}>Gender</div>
 						<div className={cl.radio__group}>
-							<input type="radio" name="gender" className={cl.form__input_radio} value="Male" />
-
-							<span className={cl.form__radio_value}>Male</span>
-
-							<input
-								type="radio"
-								name="gender"
-								className={cl.form__input_radio}
-								defaultChecked
-								value="Female"
-							/>
-
-							<span className={cl.form__radio_value}>Female</span>
+							<label htmlFor="male" className={cl.radio__label}>
+								<input
+									type="radio"
+									name="gender"
+									id="male"
+									className={cl.form__input_radio}
+									value="Male"
+								/>
+								<span className={cl.form__radio_value}>Male</span>
+							</label>
+							<label htmlFor="female" className={cl.radio__label}>
+								<input
+									type="radio"
+									name="gender"
+									id="female"
+									className={cl.form__input_radio}
+									defaultChecked
+									value="Female"
+								/>
+								<span className={cl.form__radio_value}>Female</span>
+							</label>
 						</div>
 					</div>
 				</div>
@@ -133,9 +161,7 @@ function SignUpForm() {
 				</div>
 			</div>
 
-			<div>
-				<input type="submit" className={cl.form__button} value="Complete Signup"></input>
-			</div>
+			<input type="submit" className={cl.form__button} value="Complete Signup"></input>
 		</form>
 	);
 }
