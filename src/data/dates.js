@@ -3,8 +3,9 @@ function* generateItems(start, end) {
 }
 
 export const dates = {
-	days: Array.from(generateItems(1, 31)),
+	days: [''].concat(Array.from(generateItems(1, 31))),
 	months: [
+		'',
 		'January',
 		'February',
 		'March',
@@ -18,5 +19,5 @@ export const dates = {
 		'November',
 		'December',
 	],
-	years: Array.from(generateItems(1920, 2023)),
+	years: [''].concat(Array.from(generateItems(1920, 2022))),
 };
