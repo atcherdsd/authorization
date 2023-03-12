@@ -94,7 +94,7 @@ const SignUpForm = () => {
 
 			<div className={cl.form__group_container}>
 				<div className={cl.form__group}>
-					<div className={cl.form__group_item}>
+					<div className={`${cl.form__group_item} ${cl.item1}`}>
 						<label htmlFor="first-name" className={cl.form__label}>
 							First Name
 						</label>
@@ -126,7 +126,7 @@ const SignUpForm = () => {
 							</div>
 						)}
 					</div>
-					<div className={cl.form__group_item}>
+					<div className={`${cl.form__group_item} ${cl.item2}`}>
 						<label htmlFor="last-name" className={cl.form__label}>
 							Last Name
 						</label>
@@ -161,7 +161,7 @@ const SignUpForm = () => {
 				</div>
 
 				<div className={cl.form__group}>
-					<div className={cl.form__group_item}>
+					<div className={`${cl.form__group_item} ${cl.item3}`}>
 						<label htmlFor="nationality" className={cl.form__label}>
 							Nationality
 						</label>
@@ -191,7 +191,7 @@ const SignUpForm = () => {
 							</div>
 						)}
 					</div>
-					<div className={cl.form__group_item}>
+					<div className={`${cl.form__group_item} ${cl.item4}`}>
 						<label htmlFor="email" className={cl.form__label}>
 							E-mail
 						</label>
@@ -226,7 +226,7 @@ const SignUpForm = () => {
 				</div>
 
 				<div className={cl.form__group}>
-					<div className={cl.form__group_item}>
+					<div className={`${cl.form__group_item} ${cl.item5}`}>
 						<label className={cl.form__label}>Date of Birth</label>
 						<div className={cl.select__wrapper}>
 							<div className={cl.select__container}>
@@ -313,7 +313,7 @@ const SignUpForm = () => {
 							</div>
 						</div>
 					</div>
-					<div className={cl.form__group_item}>
+					<div className={`${cl.form__group_item} ${cl.item6}`}>
 						<div className={cl.form__label}>Gender</div>
 						<div className={cl.radio__group}>
 							<label htmlFor="male" className={cl.radio__label}>
@@ -342,7 +342,7 @@ const SignUpForm = () => {
 				</div>
 
 				<div className={cl.form__group}>
-					<div className={cl.form__group_item}>
+					<div className={`${cl.form__group_item} ${cl.item7}`}>
 						<label htmlFor="password" className={cl.form__label}>
 							Password
 						</label>
@@ -374,7 +374,7 @@ const SignUpForm = () => {
 							</div>
 						)}
 					</div>
-					<div className={cl.form__group_item}>
+					<div className={`${cl.form__group_item} ${cl.item8}`}>
 						<label htmlFor="conf-password" className={cl.form__label}>
 							Confirm Password
 						</label>
@@ -403,7 +403,23 @@ const SignUpForm = () => {
 				</div>
 			</div>
 
-			<input type="submit" className={cl.form__button} value="Complete Signup"></input>
+			<input
+				type="submit"
+				className={
+					errors.firstName ||
+					errors.lastName ||
+					errors.nationality ||
+					errors.email ||
+					errors.day ||
+					errors.month ||
+					errors.year ||
+					errors.password ||
+					errors.confPassword
+						? `${cl.form__button} ${cl.form__button_error}`
+						: `${cl.form__button}`
+				}
+				value="Complete Signup"
+			></input>
 		</form>
 	);
 };
