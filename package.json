@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/atcherdsd/authorization/issues"
   },
-  "homepage": "https://github.com/atcherdsd/authorization#readme",
+  "homepage": "https://atcherdsd.github.io/authorization/",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/polyfill": "^7.12.1",
