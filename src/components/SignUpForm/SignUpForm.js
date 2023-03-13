@@ -118,10 +118,11 @@ const SignUpForm = () => {
 		// let path = 'form.php/handler/?' + searchParams.toString();
 
 		let xhr = new XMLHttpRequest();
-		xhr.open('POST', 'https://reliable-torte-5b5d46.netlify.app/json/json.php', true);
-
-		xhr.send(JSON.stringify(data));
+		xhr.open('POST', 'http://fe.it-academy.by/TestForm.php', true);
 		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+		xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+		xhr.send(JSON.stringify(data));
 
 		xhr.onload = () => {
 			if (xhr.status != 200) {
