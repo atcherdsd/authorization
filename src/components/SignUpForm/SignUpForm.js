@@ -119,8 +119,7 @@ const SignUpForm = () => {
 
 		let xhr = new XMLHttpRequest();
 		xhr.open('POST', 'https://reliable-torte-5b5d46.netlify.app/json/json.php', true);
-		// xhr.open('POST', 'http://mihailmaximov.ru/projects/json/json.php', true);
-		
+
 		xhr.send(JSON.stringify(data));
 		xhr.setRequestHeader('Content-Type', 'application/json');
 

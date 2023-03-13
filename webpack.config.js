@@ -15,8 +15,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].[hash].js',
-    // publicPath: '/autorization/',
-    // assetModuleFilename: 'assets/[hash][ext][query]',
   },
 	devServer: {
     port: 3000,
