@@ -14,12 +14,9 @@ module.exports = {
   entry: ['@babel/polyfill', './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].[contenthash].js',
-    publicPath: '/',
-    assetModuleFilename: (pathData) => {
-      const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
-      return `${filepath}/[name][hash][ext]`;
-    },
+    filename: '[name].[hash].js',
+    // publicPath: '/autorization/',
+    // assetModuleFilename: 'assets/[hash][ext][query]',
   },
 	devServer: {
     port: 3000,
@@ -33,10 +30,10 @@ module.exports = {
     new HTMLWebpackPlugin({ template: './src/index.html', favicon: './src/assets/favicon.svg' }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name][contenthash].css',
+      filename: '[name][hash].css',
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: './src/static', to: './', noErrorOnMissing: true }],
+      patterns: [{ from: './src/assets', to: './assets', noErrorOnMissing: true }],
     }),
     new ESLintPlugin({ extensions: ['js'] }),
     new webpack.DefinePlugin({ 'process.env.PUBLIC_URL': JSON.stringify(process.env.PUBLIC_URL) }),
