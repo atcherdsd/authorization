@@ -4,6 +4,7 @@ import cl from './SignUpForm.module.scss';
 import nationalities from '../../data/nationalities.json';
 import okIcon from '../../assets/Shape.svg';
 import { dates } from '../../data/dates';
+import useAlert from '../hooks/useAlert';
 
 const initialFormData = {
 	firstName: '',
@@ -22,8 +23,10 @@ const initialFormData = {
 
 const SignUpForm = () => {
 	const [data, setData] = React.useState(initialFormData);
+	const [hasError, setHasError] = React.useState(false);
 
 	const [isFullData, setIsFullData] = React.useState(false);
+	const { showSuccessAlert, showErrorAlert } = useAlert();
 
 	const {
 		register,
@@ -72,12 +75,98 @@ const SignUpForm = () => {
 		return count;
 	}
 
+	const handleClick = () => {
+		setHasError(true);
+		setTimeout(() => setHasError(false), 1000);
+	};
+
+	// function createRequest() {
+	// 	let Request = false;
+	// 	Request = new XMLHttpRequest();
+	// 	if (!Request) {
+	// 		showErrorAlert('Unable to create XMLHttpRequest');
+	// 	}
+	// 	return Request;
+	// }
+
 	const onSubmit = handleSubmit((data) => {
 		setData(data);
-		console.log(data);
-		reset(initialFormData);
-		setIsFullData(true);
-		setData(initialFormData);
+
+		// Var0
+		// let response = await fetch('https://atcherdsd.github.io/authorization/json/json.php', {
+		// let response = await fetch('http://fe.it-academy.by/TestForm.php', {
+		// method: 'POST',
+		// 	body: JSON.stringify(data),
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// });
+		// let Request = false;
+		// Request = new XMLHttpRequest();
+		// if (!Request) {
+		// 	showErrorAlert('Unable to create XMLHttpRequest');
+		// }
+		// let result = await response.json();
+		// response.status === 200 ? showSuccessAlert(result.message) : showErrorAlert(result.message);
+
+		// Var1
+
+		// let searchParams = new URLSearchParams();
+		// Object.entries(data).forEach((key, value) => {
+		// 	searchParams.set(key, value);
+		// });
+		// let path = 'form.php/handler/?' + searchParams.toString();
+
+		let xhr = new XMLHttpRequest();
+		// xhr.open('POST', 'https://atcherdsd.github.io/authorization/json/json.php', true);
+		xhr.open('POST', 'http://mihailmaximov.ru/projects/json/json.php', true);
+		xhr.send(JSON.stringify(data));
+		xhr.setRequestHeader('Content-Type', 'application/json');
+
+		xhr.onload = () => {
+			if (xhr.status != 200) {
+				showErrorAlert('Form submission failed. Error ' + xhr.response);
+				console.log('Form submission failed. Error ' + xhr.response);
+			} else {
+				showSuccessAlert('Form submission completed. Registration completed successfully');
+				setIsFullData(true);
+				reset(initialFormData);
+				setData(initialFormData);
+				console.log('Form submission completed. ' + xhr.responseText);
+			}
+		};
+		xhr.onerror = () => {
+			showErrorAlert('Request failed');
+			setIsFullData(false);
+		};
+
+		// let searchParams = new URLSearchParams();
+
+		// Object.entries(data).forEach((key, value) => {
+		// 	searchParams.set(key, value);
+		// });
+
+		// let path = 'form.php/handler/?' + searchParams.toString();
+
+		// let req = createRequest();
+		// req.onreadystatechange = function () {
+		// 	if (req.readyState == 4) {
+		// 		if (req.status == 200)
+		// 			showSuccessAlert('Form submission completed. Registration completed successfully');
+		// 	}
+		// };
+		// req.open('GET', path, true);
+		// req.send(null);
+
+		// fetch(path)
+		// 	.then((response) => {
+		// 		return response.text();
+		// 	})
+		// 	.then((text) => {
+		// 		console.log(text); // ответ сервера
+		// 	});
+
+		// event.preventDefault();
 	});
 
 	console.log(data);
@@ -95,18 +184,15 @@ const SignUpForm = () => {
 			<div className={cl.form__group_container}>
 				<div className={cl.form__group}>
 					<div className={`${cl.form__group_item} ${cl.item1}`}>
-						<label htmlFor="first-name" className={cl.form__label}>
-							First Name
-						</label>
+						<label className={cl.form__label}>First Name</label>
 						<input
 							type="text"
-							id="first-name"
 							className={
 								errors.firstName ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
-							placeholder="Alice"
+							placeholder=""
 							autoComplete="off"
-							defaultValue={''}
+							defaultValue={'Alice'}
 							{...register('firstName', {
 								required: { value: true, message: 'Please enter First Name' },
 								pattern: {
@@ -136,9 +222,9 @@ const SignUpForm = () => {
 							className={
 								errors.lastName ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
-							placeholder="Miller"
+							placeholder=""
 							autoComplete="off"
-							defaultValue={''}
+							defaultValue={'Miller'}
 							{...register('lastName', {
 								required: { value: true, message: 'Please enter Last Name' },
 								pattern: {
@@ -172,7 +258,7 @@ const SignUpForm = () => {
 									? `${cl.form__select} ${cl.input__error_select}`
 									: `${cl.form__select}`
 							}
-							defaultValue={''}
+							defaultValue={'American'}
 							{...register('nationality', {
 								required: 'Please select a nationality',
 							})}
@@ -201,9 +287,9 @@ const SignUpForm = () => {
 							className={
 								errors.email ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
-							placeholder="alice.miller@yahoo.com"
+							placeholder=""
 							autoComplete="off"
-							defaultValue={''}
+							defaultValue={'alice.miller@yahoo.com'}
 							{...register('email', {
 								required: 'Please enter E-mail',
 								pattern: {
@@ -236,7 +322,7 @@ const SignUpForm = () => {
 											? `${cl.form__select_days} ${cl.input__error_select}`
 											: `${cl.form__select_days}`
 									}
-									defaultValue={''}
+									defaultValue={'5'}
 									{...register('day', {
 										required: 'Select a day',
 										max: {
@@ -266,7 +352,7 @@ const SignUpForm = () => {
 											? `${cl.form__select_months} ${cl.input__error_select}`
 											: `${cl.form__select_months}`
 									}
-									defaultValue={''}
+									defaultValue={'October'}
 									{...register('month', {
 										required: 'Select a month',
 									})}
@@ -292,7 +378,7 @@ const SignUpForm = () => {
 											? `${cl.form__select_years} ${cl.input__error_select}`
 											: `${cl.form__select_years}`
 									}
-									defaultValue={''}
+									defaultValue={'2000'}
 									{...register('year', {
 										required: 'Select a year',
 									})}
@@ -353,7 +439,7 @@ const SignUpForm = () => {
 								errors.password ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
 							placeholder=" "
-							defaultValue={''}
+							defaultValue={'123123Aa'}
 							{...register('password', {
 								required: { value: true, message: 'Please enter a password' },
 								pattern: {
@@ -385,7 +471,7 @@ const SignUpForm = () => {
 								errors.confPassword ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
 							placeholder=" "
-							defaultValue={''}
+							defaultValue={'123123Aa'}
 							{...register('confPassword', {
 								required: { value: true, message: 'Please confirm a password' },
 								validate: (val) => {
@@ -405,19 +491,21 @@ const SignUpForm = () => {
 
 			<input
 				type="submit"
-				className={
-					errors.firstName ||
-					errors.lastName ||
-					errors.nationality ||
-					errors.email ||
-					errors.day ||
-					errors.month ||
-					errors.year ||
-					errors.password ||
-					errors.confPassword
-						? `${cl.form__button} ${cl.form__button_error}`
-						: `${cl.form__button}`
-				}
+				onClick={handleClick}
+				className={hasError ? `${cl.form__button} ${cl.form__button_error}` : `${cl.form__button}`}
+				// className={
+				// 	errors.firstName ||
+				// 	errors.lastName ||
+				// 	errors.nationality ||
+				// 	errors.email ||
+				// 	errors.day ||
+				// 	errors.month ||
+				// 	errors.year ||
+				// 	errors.password ||
+				// 	errors.confPassword
+				// 		? `${cl.form__button} ${cl.form__button_error}`
+				// 		: `${cl.form__button}`
+				// }
 				value="Complete Signup"
 			></input>
 		</form>

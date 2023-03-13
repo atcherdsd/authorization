@@ -51,31 +51,41 @@ $clr-error-border: #FF2828;
 		justify-content: space-between;
 		position: relative;
 		opacity: 0;
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
 	}
 
 	.item1 {
 		animation: appearance 0.25s 0s ease-out forwards;
+		-webkit-animation: appearance 0.25s 0s ease-out forwards;
 	}
 	.item2 {
 		animation: appearance 0.25s 0.25s ease-out forwards;
+		-webkit-animation: appearance 0.25s 0.25s ease-out forwards;
 	}
 	.item3 {
 		animation: appearance 0.25s 0.5s ease-out forwards;
+		-webkit-animation: appearance 0.25s 0.5s ease-out forwards;
 	}
 	.item4 {
 		animation: appearance 0.25s 0.75s ease-out forwards;
+		-webkit-animation: appearance 0.25s 0.75s ease-out forwards;
 	}
 	.item5 {
 		animation: appearance 0.25s 1s ease-out forwards;
+		-webkit-animation: appearance 0.25s 1s ease-out forwards;
 	}
 	.item6 {
 		animation: appearance 0.25s 1.25s ease-out forwards;
+		-webkit-animation: appearance 0.25s 1.25s ease-out forwards;
 	}
 	.item7 {
 		animation: appearance 0.25s 1.5s ease-out forwards;
+		-webkit-animation: appearance 0.25s 1.5s ease-out forwards;
 	}
 	.item8 {
 		animation: appearance 0.25s 1.75s ease-out forwards;
+		-webkit-animation: appearance 0.25s 1.75s ease-out forwards;
 	}
 
 		
