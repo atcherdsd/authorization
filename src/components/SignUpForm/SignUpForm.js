@@ -118,7 +118,7 @@ const SignUpForm = () => {
 		// let path = 'form.php/handler/?' + searchParams.toString();
 
 		let xhr = new XMLHttpRequest();
-		xhr.open('POST', 'https://fe.it-academy.by/TestForm.php', true);
+		// x.open('POST', 'https://fe.it-academy.by/TestForm.php', true);
 		xhr.open('POST', 'https://workers-airtable-form.cloudflare.workers.dev/submit', true);
 		xhr.setRequestHeader('Content-Type', 'application/json');
 		xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
