@@ -94,13 +94,13 @@ const SignUpForm = () => {
 
 		// Var0
 		// let response = await fetch('https://atcherdsd.github.io/authorization/json/json.php', {
-		let response = await fetch('https://visionary-platypus-bbd837.netlify.app/json.php', {
+		let response = await fetch('https://visionary-platypus-bbd837.netlify.app/server/index.php', {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: {
 				// Authorization:
 				// 	'Bearer patnVkXxUrEBgpJgP.612f452a8d8dd2b6229476c0535dde44b723534dd87e02f2e0a525ed31eac09a',
-				'Content-Type': 'application/json',
+				'Content-Type': 'application/x-www-form-urlencoded',
 			},
 		});
 		// let Request = false;
