@@ -23,7 +23,6 @@ module.exports = {
     liveReload: true,
     historyApiFallback: true,
   },
-	devtool: 'source-map',
   plugins: [
     new HTMLWebpackPlugin({ template: './src/index.html', favicon: './src/assets/favicon.svg' }),
     new CleanWebpackPlugin(),
