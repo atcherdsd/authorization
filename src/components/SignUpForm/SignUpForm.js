@@ -89,25 +89,37 @@ const SignUpForm = () => {
 	// 	return Request;
 	// }
 
-	const onSubmit = handleSubmit((data) => {
+	const onSubmit = handleSubmit(async (data) => {
 		setData(data);
 
 		// Var0
 		// let response = await fetch('https://atcherdsd.github.io/authorization/json/json.php', {
-		// let response = await fetch('http://fe.it-academy.by/TestForm.php', {
-		// method: 'POST',
-		// 	body: JSON.stringify(data),
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// });
+		let response = await fetch('https://visionary-platypus-bbd837.netlify.app', {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: {
+				// Authorization:
+				// 	'Bearer patnVkXxUrEBgpJgP.612f452a8d8dd2b6229476c0535dde44b723534dd87e02f2e0a525ed31eac09a',
+				'Content-Type': 'application/json',
+			},
+		});
 		// let Request = false;
 		// Request = new XMLHttpRequest();
 		// if (!Request) {
 		// 	showErrorAlert('Unable to create XMLHttpRequest');
 		// }
-		// let result = await response.json();
-		// response.status === 200 ? showSuccessAlert(result.message) : showErrorAlert(result.message);
+		let result = await response.json();
+		if (response.status === 200) {
+			showSuccessAlert('Form submission completed. Registration completed successfully');
+			setIsFullData(true);
+			reset(initialFormData);
+			setData(initialFormData);
+			console.log('Form submission completed. ' + result.message);
+		} else {
+			showErrorAlert('Form submission failed. Error ' + result.message);
+			console.log('Form submission failed. Error ' + result.message);
+		}
+		// showErrorAlert(result.message);
 
 		// Var1
 
@@ -117,30 +129,33 @@ const SignUpForm = () => {
 		// });
 		// let path = 'form.php/handler/?' + searchParams.toString();
 
-		let xhr = new XMLHttpRequest();
+		// Var 2
+		// let xhr = new XMLHttpRequest();
 		// x.open('POST', 'https://fe.it-academy.by/TestForm.php', true);
-		xhr.open('POST', 'https://workers-airtable-form.cloudflare.workers.dev/submit', true);
-		xhr.setRequestHeader('Content-Type', 'application/json');
-		xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-		xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-		xhr.send(JSON.stringify(data));
+		// xhr.open('POST', 'https://api.airtable.com/v0/appZL6IhmYa0SBh2k/table11', true);
+		// xhr.setRequestHeader(
+		// 	'Authorization',
+		// 	'Bearer patnVkXxUrEBgpJgP.612f452a8d8dd2b6229476c0535dde44b723534dd87e02f2e0a525ed31eac09a'
+		// );
+		// xhr.setRequestHeader('Content-Type', 'application/json');
+		// xhr.send(JSON.stringify(data));
 
-		xhr.onload = () => {
-			if (xhr.status != 200) {
-				showErrorAlert('Form submission failed. Error ' + xhr.response);
-				console.log('Form submission failed. Error ' + xhr.response);
-			} else {
-				showSuccessAlert('Form submission completed. Registration completed successfully');
-				setIsFullData(true);
-				reset(initialFormData);
-				setData(initialFormData);
-				console.log('Form submission completed. ' + xhr.responseText);
-			}
-		};
-		xhr.onerror = () => {
-			showErrorAlert('Request failed');
-			setIsFullData(false);
-		};
+		// xhr.onload = () => {
+		// 	if (xhr.status != 200) {
+		// 		showErrorAlert('Form submission failed. Error ' + xhr.response);
+		// 		console.log('Form submission failed. Error ' + xhr.response);
+		// 	} else {
+		// 		showSuccessAlert('Form submission completed. Registration completed successfully');
+		// 		setIsFullData(true);
+		// 		reset(initialFormData);
+		// 		setData(initialFormData);
+		// 		console.log('Form submission completed. ' + xhr.responseText);
+		// 	}
+		// };
+		// xhr.onerror = () => {
+		// 	showErrorAlert('Request failed');
+		// 	setIsFullData(false);
+		// };
 
 		// let searchParams = new URLSearchParams();
 
