@@ -36,7 +36,7 @@ const SignUpForm = () => {
 		watch,
 	} = useForm({ criteriaMode: 'all', mode: 'onChange' });
 
-	const regexpName = /(^[a-zA-Z][a-zA-Z\s]{0,20}$)/;
+	const regexpName = /(^[a-zA-Z][a-zA-Z\s]{0,50}$)/;
 	// eslint-disable-next-line no-useless-escape
 	const regexpEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	const regexpPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
