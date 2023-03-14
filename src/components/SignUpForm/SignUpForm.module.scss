@@ -18,6 +18,12 @@ $clr-error-border: #FF2828;
 	background-image: url('../../assets/UserShape_animated.svg');
 	background-position: 13.8rem 7.845rem;
 	background-repeat: no-repeat;
+	@media (max-width: 768px) {
+		background-position: 100% 100%;
+	}
+	@media (max-width: 490px) {
+		height: 100%;
+	}
   &__title {
 		font-weight: 500;
 		font-size: 22px;
@@ -43,6 +49,15 @@ $clr-error-border: #FF2828;
 		gap: 0.8125rem;
 		width: 100%;
 		height: 2.625rem;
+		@media (max-width: 768px) {
+			flex-direction: column;
+			height: 100%;
+		}
+	}
+	&__group:last-child {
+		@media (max-width: 768px) {
+			gap: 1.5rem;
+		}
 	}
 	&__group_item {
 		width: 100%;
@@ -196,6 +211,14 @@ $clr-error-border: #FF2828;
     cursor: pointer;
     transition: background-color 200ms ease-in;
 		color: #FFFFFF;
+		@media (max-width: 768px) {
+			top: auto;
+			bottom: 2.03rem;
+		}
+		@media (max-width: 580px) {
+			top: auto;
+			bottom: 4rem;
+		}
 
     &:hover {
       background-color: $clr-primary-light;
