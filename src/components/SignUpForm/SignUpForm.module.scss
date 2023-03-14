@@ -52,11 +52,18 @@ $clr-error-border: #FF2828;
 		@media (max-width: 768px) {
 			flex-direction: column;
 			height: 100%;
+			margin-top: 0.2rem;
 		}
 	}
 	&__group:last-child {
 		@media (max-width: 768px) {
-			gap: 1.5rem;
+			gap: 1.7rem;
+		}
+	}
+	&__group:nth-child(1),
+	&__group:nth-child(2) {
+		@media (max-width: 768px) {
+			gap: 1.2rem;
 		}
 	}
 	&__group_item {
