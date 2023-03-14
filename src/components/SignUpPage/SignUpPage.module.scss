@@ -34,13 +34,17 @@ $clr-bg: #5A61ED;
 		@media (max-width: 768px) {
 			max-height: 100%;
 		}
+		@media (max-width: 490px) {
+			flex-direction: column;
+		}
 		.aside {
 			flex-shrink: 1;
 			width: 8.575rem;
 			background: $clr-bg;
 			position: relative;
 			@media (max-width: 490px) {
-				width: 6rem;
+				height: 7rem;
+				width: 100%;
 			}
 			.page_title {
 				position: absolute;
@@ -61,12 +65,10 @@ $clr-bg: #5A61ED;
 					bottom: 5rem;
 				}
 				@media (max-width: 490px) {
-					font-size: 39px;
-					right: -61%;
-				}
-				@media (max-width: 370px) {
-					font-size: 39px;
-					right: -71%;
+					transform: none;
+					padding: 1.375rem;
+					position: initial;
+					width: 100%;
 				}
 			}
 		}
@@ -82,6 +84,10 @@ $clr-bg: #5A61ED;
 			}
 			@media (max-width: 580px) {
 				bottom: 2rem;
+				left: 7.7rem;
+			}
+			@media (max-width: 490px) {
+				left: 1.375rem;
 			}
 			.login_link {
 				font-weight: 400;
