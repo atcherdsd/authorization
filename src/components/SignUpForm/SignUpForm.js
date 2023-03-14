@@ -124,9 +124,9 @@ const SignUpForm = () => {
 							className={
 								errors.firstName ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
-							placeholder=""
+							placeholder="Alice"
 							autoComplete="off"
-							defaultValue={'Alice'}
+							defaultValue={''}
 							{...register('firstName', {
 								required: { value: true, message: 'Please enter First Name' },
 								pattern: {
@@ -156,9 +156,9 @@ const SignUpForm = () => {
 							className={
 								errors.lastName ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
-							placeholder=""
+							placeholder="Miller"
 							autoComplete="off"
-							defaultValue={'Miller'}
+							defaultValue={''}
 							{...register('lastName', {
 								required: { value: true, message: 'Please enter Last Name' },
 								pattern: {
@@ -192,7 +192,7 @@ const SignUpForm = () => {
 									? `${cl.form__select} ${cl.input__error_select}`
 									: `${cl.form__select}`
 							}
-							defaultValue={'American'}
+							defaultValue={''}
 							{...register('nationality', {
 								required: 'Please select a nationality',
 							})}
@@ -221,9 +221,9 @@ const SignUpForm = () => {
 							className={
 								errors.email ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
-							placeholder=""
+							placeholder="alice.miller@yahoo.com"
 							autoComplete="off"
-							defaultValue={'alice.miller@yahoo.com'}
+							defaultValue={''}
 							{...register('email', {
 								required: 'Please enter E-mail',
 								pattern: {
@@ -256,7 +256,7 @@ const SignUpForm = () => {
 											? `${cl.form__select_days} ${cl.input__error_select}`
 											: `${cl.form__select_days}`
 									}
-									defaultValue={'5'}
+									defaultValue={''}
 									{...register('day', {
 										required: 'Select a day',
 										max: {
@@ -286,7 +286,7 @@ const SignUpForm = () => {
 											? `${cl.form__select_months} ${cl.input__error_select}`
 											: `${cl.form__select_months}`
 									}
-									defaultValue={'October'}
+									defaultValue={''}
 									{...register('month', {
 										required: 'Select a month',
 									})}
@@ -312,7 +312,7 @@ const SignUpForm = () => {
 											? `${cl.form__select_years} ${cl.input__error_select}`
 											: `${cl.form__select_years}`
 									}
-									defaultValue={'2000'}
+									defaultValue={''}
 									{...register('year', {
 										required: 'Select a year',
 									})}
@@ -373,7 +373,7 @@ const SignUpForm = () => {
 								errors.password ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
 							placeholder=" "
-							defaultValue={'123123Aa'}
+							defaultValue={''}
 							{...register('password', {
 								required: { value: true, message: 'Please enter a password' },
 								pattern: {
@@ -405,7 +405,7 @@ const SignUpForm = () => {
 								errors.confPassword ? `${cl.form__input} ${cl.input__error}` : `${cl.form__input}`
 							}
 							placeholder=" "
-							defaultValue={'123123Aa'}
+							defaultValue={''}
 							{...register('confPassword', {
 								required: { value: true, message: 'Please confirm a password' },
 								validate: (val) => {
@@ -427,19 +427,6 @@ const SignUpForm = () => {
 				type="submit"
 				onClick={handleClick}
 				className={hasError ? `${cl.form__button} ${cl.form__button_error}` : `${cl.form__button}`}
-				// className={
-				// 	errors.firstName ||
-				// 	errors.lastName ||
-				// 	errors.nationality ||
-				// 	errors.email ||
-				// 	errors.day ||
-				// 	errors.month ||
-				// 	errors.year ||
-				// 	errors.password ||
-				// 	errors.confPassword
-				// 		? `${cl.form__button} ${cl.form__button_error}`
-				// 		: `${cl.form__button}`
-				// }
 				value="Complete Signup"
 			></input>
 		</form>
