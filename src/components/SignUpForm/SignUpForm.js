@@ -94,7 +94,7 @@ const SignUpForm = () => {
 
 		// Var0
 		// let response = await fetch('https://atcherdsd.github.io/authorization/json/json.php', {
-		let response = await fetch('https://visionary-platypus-bbd837.netlify.app', {
+		let response = await fetch('https://visionary-platypus-bbd837.netlify.app/json.php', {
 			method: 'POST',
 			body: JSON.stringify(data),
 			headers: {
