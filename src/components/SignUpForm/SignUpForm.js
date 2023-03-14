@@ -22,7 +22,7 @@ const initialFormData = {
 };
 
 const SignUpForm = () => {
-	const [data, setData] = React.useState(initialFormData);
+	const [, setData] = React.useState(initialFormData);
 	const [hasError, setHasError] = React.useState(false);
 
 	const [isFullData, setIsFullData] = React.useState(false);
@@ -80,113 +80,30 @@ const SignUpForm = () => {
 		setTimeout(() => setHasError(false), 1000);
 	};
 
-	// function createRequest() {
-	// 	let Request = false;
-	// 	Request = new XMLHttpRequest();
-	// 	if (!Request) {
-	// 		showErrorAlert('Unable to create XMLHttpRequest');
-	// 	}
-	// 	return Request;
-	// }
-
-	const onSubmit = handleSubmit(async (data) => {
+	const onSubmit = handleSubmit((data) => {
 		setData(data);
+		const inputData = JSON.stringify(data);
+		const inputDataArray = Object.values(data);
+		function getMessage(message, file) {
+			const blob = new Blob([message], { type: 'text/plain' });
+			const url = URL.createObjectURL(blob);
+			const link = document.createElement('a');
+			link.download = file;
+			link.href = url;
+			link.click();
+		}
 
-		// Var0
-		// let response = await fetch('https://atcherdsd.github.io/authorization/json/json.php', {
-		let response = await fetch('https://visionary-platypus-bbd837.netlify.app/server/index.php', {
-			method: 'POST',
-			body: JSON.stringify(data),
-			headers: {
-				// Authorization:
-				// 	'Bearer patnVkXxUrEBgpJgP.612f452a8d8dd2b6229476c0535dde44b723534dd87e02f2e0a525ed31eac09a',
-				'Content-Type': 'application/x-www-form-urlencoded',
-			},
-		});
-		// let Request = false;
-		// Request = new XMLHttpRequest();
-		// if (!Request) {
-		// 	showErrorAlert('Unable to create XMLHttpRequest');
-		// }
-		let result = await response.json();
-		if (response.status === 200) {
-			showSuccessAlert('Form submission completed. Registration completed successfully');
+		if (inputDataArray.length === 9) {
+			getMessage(inputData, 'server-ok.json');
+			showSuccessAlert('Registration completed successfully');
 			setIsFullData(true);
 			reset(initialFormData);
 			setData(initialFormData);
-			console.log('Form submission completed. ' + result.message);
 		} else {
-			showErrorAlert('Form submission failed. Error ' + result.message);
-			console.log('Form submission failed. Error ' + result.message);
+			getMessage('Form submission failed', 'server-error.json');
+			showErrorAlert('Form submission failed');
 		}
-		// showErrorAlert(result.message);
-
-		// Var1
-
-		// let searchParams = new URLSearchParams();
-		// Object.entries(data).forEach((key, value) => {
-		// 	searchParams.set(key, value);
-		// });
-		// let path = 'form.php/handler/?' + searchParams.toString();
-
-		// Var 2
-		// let xhr = new XMLHttpRequest();
-		// x.open('POST', 'https://fe.it-academy.by/TestForm.php', true);
-		// xhr.open('POST', 'https://api.airtable.com/v0/appZL6IhmYa0SBh2k/table11', true);
-		// xhr.setRequestHeader(
-		// 	'Authorization',
-		// 	'Bearer patnVkXxUrEBgpJgP.612f452a8d8dd2b6229476c0535dde44b723534dd87e02f2e0a525ed31eac09a'
-		// );
-		// xhr.setRequestHeader('Content-Type', 'application/json');
-		// xhr.send(JSON.stringify(data));
-
-		// xhr.onload = () => {
-		// 	if (xhr.status != 200) {
-		// 		showErrorAlert('Form submission failed. Error ' + xhr.response);
-		// 		console.log('Form submission failed. Error ' + xhr.response);
-		// 	} else {
-		// 		showSuccessAlert('Form submission completed. Registration completed successfully');
-		// 		setIsFullData(true);
-		// 		reset(initialFormData);
-		// 		setData(initialFormData);
-		// 		console.log('Form submission completed. ' + xhr.responseText);
-		// 	}
-		// };
-		// xhr.onerror = () => {
-		// 	showErrorAlert('Request failed');
-		// 	setIsFullData(false);
-		// };
-
-		// let searchParams = new URLSearchParams();
-
-		// Object.entries(data).forEach((key, value) => {
-		// 	searchParams.set(key, value);
-		// });
-
-		// let path = 'form.php/handler/?' + searchParams.toString();
-
-		// let req = createRequest();
-		// req.onreadystatechange = function () {
-		// 	if (req.readyState == 4) {
-		// 		if (req.status == 200)
-		// 			showSuccessAlert('Form submission completed. Registration completed successfully');
-		// 	}
-		// };
-		// req.open('GET', path, true);
-		// req.send(null);
-
-		// fetch(path)
-		// 	.then((response) => {
-		// 		return response.text();
-		// 	})
-		// 	.then((text) => {
-		// 		console.log(text); // ответ сервера
-		// 	});
-
-		// event.preventDefault();
 	});
-
-	console.log(data);
 
 	return isFullData === true ? (
 		<div className={cl.content__container}>
